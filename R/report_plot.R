@@ -20,10 +20,10 @@
 report_plot <- function(dat=out, facets = F, scales = 'fixed', station_names = 'Trees', sensor_name = 'Dendrometer') {
   TIMESTAMP = "TIMESTAMP"
   gg <- tidyr::pivot_longer(dat, -TIMESTAMP, names_to = station_names, values_to = sensor_name) %>%
-    ggplot2::ggplot(ggplot2::aes_(x=TIMESTAMP, y=station_names, colour = sensor_name)) +
+    ggplot2::ggplot(ggplot2::aes_string(x=TIMESTAMP, y=sensor_name, colour = station_names)) +
     ggplot2::geom_point()
   if(facets) {
-    gg <- gg + ggplot2::facet_wrap(~Trees, scales = scales) + ggplot2::scale_color_discrete(guide=FALSE)
+    gg <- gg + ggplot2::facet_wrap(station_names, scales = scales) + ggplot2::scale_color_discrete(guide=FALSE)
   }
   gg
 }
