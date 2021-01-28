@@ -23,7 +23,7 @@ report_plot <- function(dat=out, facets = F, scales = 'fixed', station_names = '
     ggplot2::ggplot(ggplot2::aes_string(x=TIMESTAMP, y=sensor_name, colour = station_names)) +
     ggplot2::geom_point()
   if(facets) {
-    gg <- gg + ggplot2::facet_wrap(station_names, scales = scales) + ggplot2::scale_color_discrete(guide=FALSE)
+    gg <- gg + ggplot2::facet_wrap(station_names, scales = scales) + ggplot2::guides(colour = 'none')
   }
   gg
 }
