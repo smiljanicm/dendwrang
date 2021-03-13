@@ -14,16 +14,16 @@
 #' @importFrom plotly ggplotly
 #' @export
 
-plot_sensor <- function(data, plotly = FALSE, line = TRUE){
+plot_sensor <- function(data, plotly = FALSE, line = TRUE, ...){
   tt <- data %>% ggplot(aes(x=TIMESTAMP, y=Sensor))
   if(line) {
     tt <- tt + geom_line()
   }
   else {
-    tt <- tt +geom_point()
+    tt <- tt + geom_point()
   }
   if(plotly) {
-    plotly::ggplotly(tt)
+    plotly::ggplotly(tt, dynamicTicks=TRUE, ...)
   } else {
     plot(tt)
   }
