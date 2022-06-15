@@ -26,9 +26,6 @@ A \code{data.frame}
 \description{
 reading data
 }
-\examples{
-
-}
 \author{
 Marko Smiljanic
 }

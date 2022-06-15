@@ -10,7 +10,6 @@
 #'
 #' @examples
 #'
-#' @importFrom dendrometeR is.dendro
 #' @importFrom readr write_csv
 #' @importFrom ggplot2 ggsave
 #'

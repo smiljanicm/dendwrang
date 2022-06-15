@@ -12,9 +12,6 @@ A \code{data.frame}
 \description{
 setting jump corrections
 }
-\examples{
-
-}
 \author{
 Marko Smiljanic
 }

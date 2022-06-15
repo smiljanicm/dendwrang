@@ -10,8 +10,6 @@
 #'
 #' @examples
 #'
-#' @importFrom dendrometeR is.dendro
-#'
 #' @export
 #'
 

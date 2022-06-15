@@ -12,9 +12,6 @@ A \code{data.frame}
 \description{
 transform series timestamps to the uniform resolution
 }
-\examples{
-
-}
 \author{
 Marko Smiljanic
 }

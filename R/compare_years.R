@@ -10,7 +10,6 @@
 #'
 #' @examples
 #'
-#' @importFrom dendrometeR is.dendro
 #' @importFrom lubridate yday
 #' @export
 #'

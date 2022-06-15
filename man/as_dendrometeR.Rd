@@ -12,9 +12,6 @@ A \code{data.frame}
 \description{
 convert to the dendrometeR format
 }
-\examples{
-
-}
 \author{
 Marko Smiljanic
 }

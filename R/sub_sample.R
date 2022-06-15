@@ -10,8 +10,6 @@
 #'
 #' @examples
 #'
-#' @importFrom dendrometeR is.dendro
-#'
 #' @export
 
 sub_sample <- function(data, timestamp_column = 1, resolution = 1800, start = NULL, end = NULL) {

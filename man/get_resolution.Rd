@@ -12,9 +12,6 @@ A \code{data.frame}
 \description{
 extract temporal resolution frequencies
 }
-\examples{
-
-}
 \author{
 Marko Smiljanic
 }

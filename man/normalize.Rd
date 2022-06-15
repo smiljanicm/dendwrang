@@ -12,9 +12,6 @@ A \code{data.frame}
 \description{
 compares all of the years
 }
-\examples{
-
-}
 \author{
 Marko Smiljanic
 }

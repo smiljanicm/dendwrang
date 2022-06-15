@@ -12,7 +12,6 @@
 #'
 #' @examples
 #'
-#' @importFrom dendrometeR is.dendro
 #' @importFrom dplyr left_join
 #' @importFrom dplyr distinct_at
 #'

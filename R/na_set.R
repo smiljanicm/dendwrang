@@ -19,7 +19,6 @@
 #' @examples
 #'
 #' @importFrom tidyr `%>%`
-#' @importFrom dendrometeR is.dendro
 #' @importFrom dplyr case_when
 #' @importFrom dplyr mutate
 #' @importFrom rlang sym

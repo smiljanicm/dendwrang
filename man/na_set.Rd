@@ -23,12 +23,6 @@ original \code{data.frame} or \code{tibble} with the \code{NA} in data
 \description{
 function sets single suspect data point or data sequence to \code{NA}
 }
-\details{
-
-}
-\examples{
-
-}
 \author{
 Marko Smiljanic
 }

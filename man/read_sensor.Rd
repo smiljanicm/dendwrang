@@ -13,9 +13,6 @@ A \code{data.frame}
 \description{
 reading sensor data
 }
-\examples{
-
-}
 \author{
 Marko Smiljanic
 }

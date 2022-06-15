@@ -10,7 +10,6 @@
 #'
 #' @examples
 #'
-#' @importFrom dendrometeR is.dendro
 #'
 #' @export
 as_dendrometeR <- function(data, timestamp_column = 1) {
@@ -23,7 +22,6 @@ as_dendrometeR <- function(data, timestamp_column = 1) {
 #  }
   rownames(out) <- as.characater(data[timestamp_column])
   out <- out[-timestamp_column]
-  stopifnot(dendrometeR::is.dendro(out))
   out
 }
 

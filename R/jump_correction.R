@@ -13,11 +13,9 @@
 #' @importFrom tidyr `%>%`
 #' @importFrom RCop `%><%`
 #' @importFrom RCop `%+=%`
-#' @importFrom dendrometeR is.dendro
 #'
 #' @export
 jump_correction <- function(data, pre, post, jump, offset = 0, name = 'Sensor') {
-#  stopifnot(dendrometeR::is.dendro(data), inherits(pre, 'POSIXct'), inherits(post, 'POSIXct'), inherits(jump, 'POSIXct'), is.numeric(offset))
   if(is.numeric(name)) {
     name <- colnames(data)[name]
   }
