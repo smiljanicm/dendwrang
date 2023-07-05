@@ -13,7 +13,7 @@
 #' @export
 
 sub_sample <- function(data, timestamp_column = 1, resolution = 1800, start = NULL, end = NULL) {
-  timestamps <- data[[timestamp_column]]
+  timestamps <- data %>% select_at(timestamp_column)
   timestamp_name <- colnames(data)[[timestamp_column]]
 
   if(is.null(start)) {
@@ -34,8 +34,12 @@ sub_sample <- function(data, timestamp_column = 1, resolution = 1800, start = NU
       filter_at(timestamp_column %><% c(start, end)) %>%
       distinct_at(timestamp_column, .keep_all = TRUE)
   } else {
-    timeindex <- as.data.frame(seq(time_start, time_end, resolution))
+    print(time_start)
+    print(time_end)
+    print(resolution)
+    timeindex <- as.data.frame(seq(time_start[[1]], time_end[[1]], resolution))
     colnames(timeindex) <- timestamp_name
+    print(head(timeindex))
     out <- left_join(timeindex, data) %>% distinct_at(timestamp_column, .keep_all = TRUE)
   }
 

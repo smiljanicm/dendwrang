@@ -15,9 +15,21 @@
 #' @importFrom RCop `%+=%`
 #'
 #' @export
-jump_correction <- function(data, pre, post, jump, offset = 0, name = 'Sensor') {
+jump_correction <- function(data, pre, post, jump, tz='UTC', offset = 0, name = 'Sensor') {
   if(is.numeric(name)) {
     name <- colnames(data)[name]
+  }
+
+  if(is.character(pre)) {
+    pre <- as.POSIXct(pre, tz=tz)
+  }
+
+  if(is.character(post)) {
+    post <- as.POSIXct(post, tz=tz)
+  }
+
+  if(is.character(jump)) {
+    jump <- as.POSIXct(jump, tz=tz)
   }
 
   data[data$TIMESTAMP %><% jump, name] <- NA
