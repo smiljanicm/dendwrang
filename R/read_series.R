@@ -27,7 +27,7 @@
 #'
 #' @export
 read_series <- function(filename, timestamp_column = 1, sensor_column = 3, data_row = 5, header_row = 2, col_names = NULL, ...) {
-  nms <- scan(filename, skip=header_row-1, nlines=1, what=character(), sep=',')
+  nms <- scan(filename, skip=header_row-1, nlines=1, what=character(), sep=',', quiet=TRUE)
   out <- readr::read_csv(filename, skip=data_row - 1, na=c("NA", "NAN", "NaN"),
                   guess_max = Inf, col_names = FALSE, ...)
   out <- set_names(out, nms)
