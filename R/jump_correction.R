@@ -35,14 +35,14 @@ jump_correction <- function(data, pre, post, jump, tz='UTC', offset = 0, name = 
 
   # print(min_res)
 
-  pre[[1]] <- as.POSIXct(as.numeric(pre[[1]]) %/% min_res * min_res, tz=tz)
-  pre[[2]] <-  as.POSIXct(as.numeric(pre[[2]] + min_res) %/% min_res * min_res, tz=tz)
+  pre[[1]] <- lubridate::as_datetime(as.numeric(pre[[1]]) %/% min_res * min_res, tz=tz)
+  pre[[2]] <-  lubridate::as_datetime(as.numeric(pre[[2]] + min_res) %/% min_res * min_res, tz=tz)
 
-  post[[1]] <- as.POSIXct(as.numeric(post[[1]]) %/% min_res * min_res, tz=tz)
-  post[[2]] <-  as.POSIXct(as.numeric(post[[2]] + min_res) %/% min_res * min_res, tz=tz)
+  post[[1]] <- lubridate::as_datetime(as.numeric(post[[1]]) %/% min_res * min_res, tz=tz)
+  post[[2]] <-  lubridate::as_datetime(as.numeric(post[[2]] + min_res) %/% min_res * min_res, tz=tz)
 
-  jump[[1]] <- as.POSIXct(as.numeric(jump[[1]]) %/% min_res * min_res, tz=tz)
-  jump[[2]] <-  as.POSIXct(as.numeric(jump[[2]] + min_res) %/% min_res * min_res, tz=tz)
+  jump[[1]] <- lubridate::as_datetime(as.numeric(jump[[1]]) %/% min_res * min_res, tz=tz)
+  jump[[2]] <-  lubridate::as_datetime(as.numeric(jump[[2]] + min_res) %/% min_res * min_res, tz=tz)
 
   # print(jump)
   data[data$TIMESTAMP %>=<% jump, name] <- NA
