@@ -31,8 +31,22 @@ jump_correction <- function(data, pre, post, jump, tz='UTC', offset = 0, name = 
   if(is.character(jump)) {
     jump <- as.POSIXct(jump, tz=tz)
   }
+  min_res <- min_resolution(data)
 
-  data[data$TIMESTAMP %><% jump, name] <- NA
+  # print(min_res)
+
+  pre[[1]] <- as.POSIXct(as.numeric(pre[[1]]) %/% min_res * min_res, tz=tz)
+  pre[[2]] <-  as.POSIXct(as.numeric(pre[[2]] + min_res) %/% min_res * min_res, tz=tz)
+
+  post[[1]] <- as.POSIXct(as.numeric(post[[1]]) %/% min_res * min_res, tz=tz)
+  post[[2]] <-  as.POSIXct(as.numeric(post[[2]] + min_res) %/% min_res * min_res, tz=tz)
+
+  jump[[1]] <- as.POSIXct(as.numeric(jump[[1]]) %/% min_res * min_res, tz=tz)
+  jump[[2]] <-  as.POSIXct(as.numeric(jump[[2]] + min_res) %/% min_res * min_res, tz=tz)
+
+  # print(jump)
+  data[data$TIMESTAMP %>=<% jump, name] <- NA
+  # print(range(data$TIMESTAMP))
   correction <-
     data %>%
     filter(TIMESTAMP %><% pre) %>%
@@ -42,6 +56,6 @@ jump_correction <- function(data, pre, post, jump, tz='UTC', offset = 0, name = 
     filter(TIMESTAMP %><% post) %>%
     summarize('med' = median(get(name), na.rm=TRUE)) %>%
     as.double()
-  data[data$TIMESTAMP > mean(jump),name] %+=% (correction + offset)
+  data[data$TIMESTAMP > min(jump),name] %+=% (correction + offset)
   return(data)
 }
