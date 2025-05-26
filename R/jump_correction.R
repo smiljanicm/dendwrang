@@ -15,7 +15,7 @@
 #' @importFrom RCop `%+=%`
 #'
 #' @export
-jump_correction <- function(data, pre, post, jump, tz='UTC', offset = 0, name = 'Sensor') {
+jump_correction <- function(data, pre = c(jump - 60*60*25, jump-60*60), post = c(jump+60*60, jump + 60*60*25), jump, tz='UTC', offset = 0, name = 'Sensor') {
   if(is.numeric(name)) {
     name <- colnames(data)[name]
   }
@@ -31,6 +31,12 @@ jump_correction <- function(data, pre, post, jump, tz='UTC', offset = 0, name = 
   if(is.character(jump)) {
     jump <- as.POSIXct(jump, tz=tz)
   }
+
+  if(length(as.vector(jump)) == 1) {
+ #   print('ok')
+    jump <- c(jump - 60*60,jump + 60*60)
+  }
+  print(jump)
   min_res <- min_resolution(data)
 
   # print(min_res) should be a warning of duplicates if min_res = 0
@@ -45,7 +51,9 @@ jump_correction <- function(data, pre, post, jump, tz='UTC', offset = 0, name = 
     jump[[2]] <-  lubridate::as_datetime(as.numeric(jump[[2]] + min_res) %/% min_res * min_res, tz=tz)
   }
 
-  # print(jump)
+#  print(jump)
+#  print(pre)
+#  print(post)
   data[data$TIMESTAMP %>=<% jump, name] <- NA
   # print(range(data$TIMESTAMP))
   correction <-
