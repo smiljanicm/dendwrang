@@ -2,10 +2,12 @@
 
 export(as_dendrometeR)
 export(assign_data)
+export(auto_jump)
 export(compare_years)
 export(get_resolution)
 export(glimpse_sensor)
 export(jump_correction)
+export(min_resolution)
 export(na_set)
 export(normalize)
 export(plot_sensor)
