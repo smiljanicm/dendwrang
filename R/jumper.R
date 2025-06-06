@@ -16,7 +16,8 @@
 #'
 #' @export
 jumper <- function (data, timestamp_column = 1, name = 'Sensor', ...) {
-  data <- as_tibble(data)
+  data <- as_tibble(data) %>% rename('TIMESTAMP' = timestamp_column)
+
   if(is.numeric(name)) {
     name <- colnames(data)[name]
   }
