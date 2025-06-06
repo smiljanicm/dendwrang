@@ -20,15 +20,16 @@ jumper <- function (data, timestamp_column = 1, name = 'Sensor', ...) {
   if(is.numeric(name)) {
     name <- colnames(data)[name]
   }
-
+#  print(name)
+#  print(head(data))
   if (!inherits(data[[timestamp_column]], "Date") && !inherits(data[[timestamp_column]], "POSIXct")) {
     data[[timestamp_column]] <- ymd_hms(data[[timestamp_column]])
   }
 
   df_out <- auto_jump(data, timestamp_column = timestamp_column, name = name, ...)
-  print(df_out)
+#  print(df_out)
   correction <- df_out$TIMESTAMP[1]
-  data <- data %>% jump_correction(jump = correction)
+  data <- data %>% jump_correction(jump = correction, name=name)
   df_out <- auto_jump(data, timestamp_column = timestamp_column, name = name, ...)
   if(nrow(df_out) == 0) {
     return(data)
