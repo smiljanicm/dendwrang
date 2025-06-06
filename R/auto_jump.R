@@ -25,7 +25,7 @@ auto_jump <- function (data, threshold, timestamp_column = 1, name = 'Sensor') {
   }
   value_diffs <- c(0, diff(data[[name]], na.rm = T))
   jumps <- which(abs(value_diffs) >= threshold)
-  if(print(length(jumps) != 0)) {
+  if(length(jumps) != 0) {
     df_out <- data.frame('Index' = jumps,
                          'Jump_time' = data[jumps, timestamp_column],
                          'Jump_value' = value_diffs[jumps])

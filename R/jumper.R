@@ -35,6 +35,10 @@ jumper <- function (data, timestamp_column = 1, name = 'Sensor', ...) {
   correction <- df_out$TIMESTAMP[1]
   data <- data %>% jump_correction(jump = correction, name=name)
   df_out <- auto_jump(data, timestamp_column = timestamp_column, name = name, ...)
+  if(is.null(df_out)) {
+    return(data)
+  }
+
   if(nrow(df_out) == 0) {
     return(data)
   } else {
