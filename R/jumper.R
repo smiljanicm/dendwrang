@@ -29,6 +29,9 @@ jumper <- function (data, timestamp_column = 1, name = 'Sensor', ...) {
 
   df_out <- auto_jump(data, timestamp_column = timestamp_column, name = name, ...)
 #  print(df_out)
+  if(is.null(df_out)) {
+    return(data)
+  }
   correction <- df_out$TIMESTAMP[1]
   data <- data %>% jump_correction(jump = correction, name=name)
   df_out <- auto_jump(data, timestamp_column = timestamp_column, name = name, ...)
